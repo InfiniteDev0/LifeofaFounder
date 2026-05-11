@@ -1,4 +1,4 @@
-import { Caveat_Brush,  Geist_Mono, Zain } from "next/font/google";
+import { Caveat_Brush,  Geist_Mono, Outfit, Zain } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 
@@ -14,6 +14,11 @@ const zain = Zain({
   weight: "400"
 });
 
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  weight: "400",
+});
 export const metadata = {
   title: "Life of a Founder",
   description: "Build your life and Be part of our community",
@@ -23,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${caveat.variable}  ${zain.variable} h-full antialiased`}
+      className={`${caveat.variable}  ${zain.variable } ${outfit.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col">
       <Navbar/>

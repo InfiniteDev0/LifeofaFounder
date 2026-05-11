@@ -1,61 +1,103 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import this
-import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-  const pathname = usePathname(); // Get current URL path
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Classes", href: "/classes" },
+    { name: "Build", href: "/" },
+    { name: "Courses", href: "/courses" },
     { name: "Books", href: "/books" },
     { name: "Community", href: "/community" },
   ];
 
   return (
-    <nav className="flex items-center justify-between px-7 py-3 fixed w-full z-50">
-      <h1 className="text-2xl font-bold text-white">Life of a founder</h1>
+    <nav className="fixed w-full z-50 bg-black/70 backdrop-blur-3xl border-b border-white/5 md:border-none">
+      <div className="flex items-center justify-between px-5 md:px-7 py-3">
+        <h1 className="text-xl md:text-2xl font-bold">Life of a founder</h1>
 
-      <ul className="flex items-center gap-1 bg-zinc-800/50 backdrop-blur-3xl border border-white/10 p-1 text-sm rounded-full">
-        {navLinks.map((item) => {
-          // Check if this specific link is the current active path
-          const isActive = pathname === item.href;
+        {/* Desktop Nav */}
+        <ul className="hidden md:flex items-center gap-1 bg-zinc-900/50 backdrop-blur-3xl p-1 text-sm rounded-full border border-white/5">
+          {navLinks.map((item) => {
+            const isActive = pathname === item.href;
 
-          return (
-            <li
-              key={item.name}
-              className="relative px-6 py-1 cursor-pointer outline-none"
-            >
-              <Link
-                href={item.href}
-                className={`relative z-10 transition-colors duration-300 ${
-                  isActive
-                    ? "text-black font-medium"
-                    : "text-zinc-400 hover:text-white"
-                }`}
+            return (
+              <li
+                key={item.name}
+                className="relative px-6 py-1.5 cursor-pointer outline-none zain text-[15px]"
               >
-                {item.name}
-              </Link>
+                <Link
+                  href={item.href}
+                  className={`relative z-10 transition-colors duration-300 ${
+                    isActive
+                      ? "text-black font-medium"
+                      : "text-zinc-400 hover:text-white"
+                  }`}
+                >
+                  {item.name}
+                </Link>
 
-              {/* The pill now follows the URL, not a local state click */}
-              {isActive && (
-                <motion.div
-                  layoutId="active-pill"
-                  className="absolute inset-0 bg-white rounded-full"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-            </li>
-          );
-        })}
-      </ul>
+                {isActive && (
+                  <motion.div
+                    layoutId="active-pill"
+                    className="absolute inset-0 bg-white rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </li>
+            );
+          })}
+        </ul>
 
-      <button className="rounded-full px-5 py-1 bg-white text-sm text-black hover:bg-zinc-200 transition">
-        Start Here
-      </button>
+        {/* Mobile Toggle Button */}
+        <button
+          className="md:hidden text-zinc-400 hover:text-white transition-colors"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Nav Dropdown */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-3xl border-b border-white/5"
+          >
+            <ul className="flex flex-col p-4 gap-2">
+              {navLinks.map((item) => {
+                const isActive = pathname === item.href;
+
+                return (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`block px-4 py-3 rounded-lg transition-all duration-300 zain text-lg ${
+                        isActive
+                          ? "bg-white text-black font-semibold"
+                          : "text-zinc-400 hover:bg-white/5 hover:text-white"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
