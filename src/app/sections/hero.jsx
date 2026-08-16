@@ -87,14 +87,14 @@ const Hero = () => {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 auto-rows-fr border-2 border-emerald-900/10 rounded-sm w-full p-2">
-        <div className="p-3 h-fit lg:min-h-40 flex flex-col">
+      <div className="grid grid-cols-1 lg:grid-cols-4 md:auto-rows-fr border-2 border-emerald-900/10  rounded-sm w-full p-2">
+        <div className="p-3 h-fit  lg:min-h-40 flex flex-col">
           <h1 className="text-xl font-semibold">My productivity apps</h1>
-          <div className="md:h-full flex items-center justify-center">
+          <div className="md:h-full  flex md:items-center md:justify-center">
             <IconStack items={productivityApps} />
           </div>
         </div>
-        <div className="p-3 h-fit lg:border-x lg:min-h-40 flex flex-col">
+        <div className="p-3 h-fit lg:border-x lg:min-h-40 flex flex-col ">
           <h1 className="text-xl font-semibold">I Post My progress Here</h1>
           <div className="md:h-full flex items-center justify-center">
             <IconStack items={socialPlatforms} />

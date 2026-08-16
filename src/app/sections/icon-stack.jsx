@@ -9,7 +9,7 @@ const Z_INDEX_CLASSES = ["z-40", "z-30", "z-20", "z-10", "z-0"];
 
 export const IconStack = ({ items }) => {
   return (
-    <div className="group/stack flex w-full items-center justify-center py-4">
+    <div className="group/stack flex w-full md:items-center md:justify-center pt-2">
       {items.map((item, index) => (
         <Tooltip key={item.label}>
           <TooltipTrigger asChild>
