@@ -1,16 +1,10 @@
-import Image from "next/image";
-import Hero from "./components/hero";
-import MyStartUp from "./components/mystartup";
-import MyWork from "./components/mywork";
-import MyContent from "./components/mycontent";
+
+import Hero from "./sections/hero";
 
 export default function Home() {
   return (
-    <div className="pt-25">
+    <div className="pt-25 px-5 md:px-10">
       <Hero />
-      <MyStartUp />
-      <MyWork />
-      <MyContent/>
     </div>
   );
 }

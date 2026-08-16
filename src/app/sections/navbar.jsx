@@ -18,12 +18,14 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed w-full z-50 bg-black/70 backdrop-blur-3xl border-b border-white/5 md:border-none">
-      <div className="flex items-center justify-between px-5 md:px-7 py-3">
-        <h1 className="text-xl md:text-2xl font-bold">Life of a founder</h1>
+    <nav className="fixed w-full  z-50">
+      <div className="flex items-center justify-between px-5  py-3">
+        <h1 className="text-xl p-2 px-5 rounded-full bg-emerald-500 backdrop-blur-3xl font-bold">
+          Founders Diary
+        </h1>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-1 bg-zinc-900/50 backdrop-blur-3xl p-1 text-sm rounded-full border border-white/5">
+        {/* <ul className="hidden md:flex items-center gap-1  backdrop-blur-3xl p-1 text-sm rounded-full">
           {navLinks.map((item) => {
             const isActive = pathname === item.href;
 
@@ -37,7 +39,7 @@ const Navbar = () => {
                   className={`relative z-10 transition-colors duration-300 ${
                     isActive
                       ? "text-black font-medium"
-                      : "text-zinc-400 hover:text-white"
+                      : "text-zinc-500 hover:text-zinc-900"
                   }`}
                 >
                   {item.name}
@@ -46,26 +48,26 @@ const Navbar = () => {
                 {isActive && (
                   <motion.div
                     layoutId="active-pill"
-                    className="absolute inset-0 bg-white rounded-full"
+                    className="absolute inset-0 bg-orange-500 rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
               </li>
             );
           })}
-        </ul>
+        </ul> */}
 
         {/* Mobile Toggle Button */}
-        <button
-          className="md:hidden text-zinc-400 hover:text-white transition-colors"
+        {/* <button
+          className="md:hidden text-orange-500 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        </button> */}
       </div>
 
       {/* Mobile Nav Dropdown */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -97,7 +99,7 @@ const Navbar = () => {
             </ul>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </nav>
   );
 };
