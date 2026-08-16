@@ -107,7 +107,9 @@ const Hero = () => {
             Some projects share the same stack, but if you’re curious, take a
             look for yourself.”
           </p>
-          <Button className={"w-full mt-auto"}>Click Here!</Button>
+          <Button className={"w-full mt-auto"} asChild>
+            <Link href="/stack">Click Here!</Link>
+          </Button>
         </div>
         <div className="p-3 min-h-40 flex flex-col">
           <h1 className="text-xl font-semibold">Builder Notes</h1>
