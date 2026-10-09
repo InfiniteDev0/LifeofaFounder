@@ -1,10 +1,11 @@
-
-import Hero from "./sections/hero";
+import ProfileHeader from "@/components/sections/profile-header";
+import ProjectsShowcase from "@/components/sections/projects-showcase";
 
 export default function Home() {
   return (
-    <div className="pt-25 px-5 md:px-10">
-      <Hero />
-    </div>
+    <main className="relative min-h-screen">
+      <ProfileHeader />
+      <ProjectsShowcase />
+    </main>
   );
 }

@@ -1,10 +1,9 @@
-import { Caveat_Brush, Geist_Mono, Outfit, Zain } from "next/font/google";
+import { Luxurious_Roman, Outfit, Zain } from "next/font/google";
 import "./globals.css";
-import Navbar from "./sections/navbar";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import Navbar from "@/components/navbar";
 
-const caveat = Caveat_Brush({
-  variable: "--font-caveat",
+const luxury = Luxurious_Roman({
+  variable: "--font-luxurious",
   subsets: ["latin"],
   weight: "400",
 });
@@ -12,7 +11,7 @@ const caveat = Caveat_Brush({
 const zain = Zain({
   variable: "--font-zain",
   subsets: ["latin"],
-  weight: "400",
+  weight: "300",
 });
 
 const outfit = Outfit({
@@ -21,7 +20,7 @@ const outfit = Outfit({
   weight: "400",
 });
 export const metadata = {
-  title: "Founders Diary",
+  title: "Abdiaziz | Build your idea with me",
   description: "Build your life and Be part of our community",
 };
 
@@ -29,13 +28,10 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${caveat.variable}  ${zain.variable} ${outfit.variable} h-full antialiased`}
+      className={`${luxury.variable}  ${zain.variable} ${outfit.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <TooltipProvider>
-          <Navbar />
+      <body className="min-h-full flex flex-col dark">
           {children}
-        </TooltipProvider>
       </body>
     </html>
   );
