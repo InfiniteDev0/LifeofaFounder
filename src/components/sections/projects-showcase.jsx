@@ -24,7 +24,7 @@ export default function ProjectsShowcase() {
             key={t.id}
             onClick={() => setActiveTab(t.id)}
             className={cn(
-              "pb-2 font-heading text-lg border-b-2 cursor-pointer transition-colors",
+              "pb-1 font-he text-md zain border-b-2 cursor-pointer transition-colors",
               activeTab === t.id
                 ? "text-foreground border-foreground"
                 : "text-muted-foreground border-transparent hover:text-foreground"
